@@ -1,6 +1,6 @@
 # Pinecone
 
-Pinecone is an experimental overlay routing protocol suite which is the foundation of the current P2P Matrix demos. It is designed to provide end-to-end encrypted connectivity between devices at a global scale over any compatible medium (currently TCP, WebSockets, Bluetooth Low Energy etc), allowing multi-hop peer-to-peer connectivity between devices even in places where there is no Internet connectivity.
+Pinecone is an experimental overlay routing protocol suite which is the foundation of the current P2P Matrix demos. It is designed to provide end-to-end encrypted connectivity between devices at a global scale over any compatible medium (currently TCP, WebSockets, Bluetooth Low Energy etc), allowing **multi-hop peer-to-peer connectivity** between devices even in places where there is **no Internet connectivity**.
 
 Pinecone builds **two virtual topologies**: 
 - a globally agreed spanning tree, like [Yggdrasil](https://github.com/yggdrasil-network/yggdrasil-go), and 
@@ -8,7 +8,7 @@ Pinecone builds **two virtual topologies**:
 
 This gives some rise to the routing scheme perhaps being called **SNEK (Sequentially Networked Edwards Key) routing**, but perhaps we can come up with a better acronym. 🐍
 
-Intersecting paths between keyspace neighbours provide the bulk of the routing knowledge, whilst the spanning tree provides greedy routing for some bootstrap and path setup traffic. In addition, Pinecone also implements source routing and an active pathfinder, although these are currently not used by the P2P Matrix demos.
+Intersecting paths between keyspace neighbours provide the bulk of the **routing knowledge**, whilst the spanning tree provides greedy routing for some bootstrap and path setup traffic. In addition, Pinecone also implements **source routing and an active pathfinder**, although these are currently not used by the P2P Matrix demos.
 
 Pinecone is incredibly experimental still. There might be bugs, vulnerabilities or architectural problems that we don't yet know about. If you spot anything that doesn't look right, we are very happy to welcome issues and pull requests, or you can join us in [#p2p:matrix.org](https://matrix.to/#/#p2p:matrix.org).
 
@@ -44,19 +44,19 @@ This implementation is written in [Go](https://golang.org) which has excellent s
 
 ### Why not Yggdrasil?
 
-We did in fact experiment with Yggdrasil in earlier P2P Matrix demos, and in many ways, Pinecone is directly inspired by Yggdrasil. However, the spanning tree topology alone is not a suitable routing scheme for highly dynamic networks. Peerings that represent parent-child relationships on the spanning tree can result in entire parts of the coordinate system becoming temporarily invalidated, interrupting connectivity.
+We did in fact experiment with Yggdrasil in earlier P2P Matrix demos, and in many ways, Pinecone is directly inspired by Yggdrasil. However, the **spanning tree topology** alone is not a suitable routing scheme for highly dynamic networks. Peerings that represent parent-child relationships on the spanning tree can result in entire parts of the coordinate system becoming temporarily invalidated, interrupting connectivity.
 
 ### Why not libp2p?
 
-We experimented with that too! libp2p worked well for local-only scenarios but currently assumes in many places that nodes will be directly routable to each other over (either over a LAN or the Internet), which is not necessarily going to be the case for P2P Matrix. Other components that would be useful (such as NAT traversal and overlay routing) are still quite early. If Pinecone overlay routing is a success then we will hopefully to be able to assist with adding support into libp2p in the future.
+We experimented with that too! **libp2p worked well for local-only scenarios** but currently assumes in many places that nodes will be directly routable to each other over (either over a LAN or the Internet), which is not necessarily going to be the case for P2P Matrix. Other components that would be useful (such as NAT traversal and overlay routing) are still quite early. If Pinecone overlay routing is a success then we will hopefully to be able to assist with adding support into libp2p in the future.
 
 ### Does Pinecone provide anonymity?
 
-No, it is not a goal of Pinecone to provide anonymity. Pinecone packets will be routed using the most direct paths possible (in contrast to Tor and friends, which deliberately send traffic well out of their way) and Pinecone packets do contain source and destination information in their headers currently. It is likely that we will be able to seal some of this information, in particular the source addresses, to reduce traffic correlation, but this is not done today.
+No, it is not a goal of Pinecone to provide anonymity. Pinecone packets will be routed using the most direct paths possible (in contrast to Tor and friends, which deliberately send traffic well out of their way) and Pinecone packets do **contain source and destination information in their headers** currently. It is likely that we will be able to seal some of this information, in particular the source addresses, to reduce traffic correlation, but this is not done today.
 
 ### Does Pinecone work on mobile devices?
 
-Yes, we actually have two P2P Matrix demos for Android and iOS today. Node mobility is an important problem for us to solve, as not many routing schemes today respond well to topology changes. We believe that the SNEK routing within Pinecone should respond well to topology changes.
+Yes, we actually have two **P2P Matrix demos for Android and iOS today**. Node mobility is an important problem for us to solve, as not many routing schemes today respond well to topology changes. We believe that the **SNEK routing within Pinecone** should respond well to topology changes.
 
 ### What is a static peer?
 
