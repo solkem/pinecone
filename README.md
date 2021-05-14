@@ -4,9 +4,9 @@ Pinecone is an experimental overlay routing protocol suite which is the foundati
 
 Pinecone builds **two virtual topologies**: 
 
-1. a globally agreed spanning tree, like [Yggdrasil](https://github.com/yggdrasil-network/yggdrasil-go), and 
+1. a **globally agreed** spanning tree, like [Yggdrasil](https://github.com/yggdrasil-network/yggdrasil-go), and 
 
-2. a virtual line (or snake) arranged sequentially by public key. This gives some rise to the routing scheme perhaps being called **SNEK (Sequentially Networked Edwards Key) routing**, but perhaps we can come up with a better acronym. 🐍
+2. a **virtual line (or snake) arranged** sequentially by public key. This gives some rise to the routing scheme perhaps being called **SNEK (Sequentially Networked Edwards Key) routing**, but perhaps we can come up with a better acronym. 🐍
 
 Intersecting paths between keyspace neighbours provide the bulk of the **routing knowledge**, whilst the spanning tree provides greedy routing for some bootstrap and path setup traffic. In addition, Pinecone also implements **source routing and an active pathfinder**, although these are currently not used by the P2P Matrix demos.
 
